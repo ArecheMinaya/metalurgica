@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaRegBuilding } from "react-icons/fa";
 import { IoBuildOutline } from "react-icons/io5";
 import { GiCableStayedBridge } from "react-icons/gi";
@@ -6,27 +6,35 @@ import { motion } from "framer-motion";
 
 function Services2() {
   const [isVisible, setIsVisible] = useState(false);
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  const handleScroll = () => {
-    const element = document.getElementById("servicesSection");
-    const rect = element.getBoundingClientRect();
-    if (rect.top >= 0 && rect.bottom <= window.innerHeight && !hasAnimated) {
-      setIsVisible(true); // Si el componente está completamente visible y no se ha animado aún
-      setHasAnimated(true); // Evitar que se repita la animación
-    }
-  };
+  const sectionRef = useRef(null);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Desconectamos el observer para evitar ejecuciones innecesarias
+        }
+      },
+      {
+        threshold: 0.5, // Se activa cuando el 50% del elemento está visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
     };
-  }, [hasAnimated]);
+  }, []);
 
   return (
     <div
-      id="servicesSection"
+      ref={sectionRef}
       style={{
         backgroundImage: `url("images/image2.png")`,
         backgroundSize: "cover",

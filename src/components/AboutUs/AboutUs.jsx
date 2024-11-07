@@ -1,36 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
 import { motion } from "framer-motion";
 
 function AboutUs() {
-  // Estado para controlar si el componente está en el viewport
   const [isVisible, setIsVisible] = useState(false);
-  const [hasAnimated, setHasAnimated] = useState(false); // Estado adicional para controlar que la animación solo ocurra una vez
-
-  // Detectamos si el componente está en el viewport usando el evento 'scroll'
-  const handleScroll = () => {
-    const element = document.getElementById("aboutUsSection");
-    const rect = element.getBoundingClientRect();
-    if (rect.top >= 0 && rect.bottom <= window.innerHeight && !hasAnimated) {
-      setIsVisible(true); // Si el componente está completamente visible y no se ha animado aún
-      setHasAnimated(true); // Evitar que se repita la animación
-    }
-  };
+  const sectionRef = useRef(null);
 
   useEffect(() => {
-    // Añadimos el listener para el evento de scroll
-    window.addEventListener("scroll", handleScroll);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Si el elemento está en el viewport, activamos la animación
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Desconectamos el observer una vez que la animación ha sido activada
+        }
+      },
+      {
+        threshold: 0.5, // La animación se activará cuando el 50% del elemento esté visible
+      }
+    );
 
-    // Limpiamos el listener al desmontar el componente
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
     };
-  }, [hasAnimated]); // Dependemos del estado `hasAnimated` para evitar repetir la animación
+  }, []);
 
   return (
     <div
-      id="aboutUsSection" // Le damos un ID a la sección para poder detectarla en el scroll
+    id="aboutUsSection" // Le damos un ID a la sección para poder 
+      ref={sectionRef} // Usamos ref en lugar de id para el observer
       className="w-full flex md:flex-row justify-evenly items-center flex-col-reverse h-auto min-h-[500px] pt-20 pb-20 md:pb-0 bg-slate-50"
       style={{
         backgroundImage: `url("images/fondo2.png")`,

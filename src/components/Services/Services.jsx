@@ -1,32 +1,39 @@
-import React, { useState, useEffect } from "react";
-import { FaChartLine } from 'react-icons/fa'; 
-import { motion } from "framer-motion"; // Importar motion
+import React, { useState, useEffect, useRef } from "react";
+import { FaChartLine } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 function Services() {
   const [isVisible, setIsVisible] = useState(false);
-
-  // Detectamos si el componente está en el viewport usando el evento 'scroll'
-  const handleScroll = () => {
-    const element = document.getElementById("servicesSection");
-    const rect = element.getBoundingClientRect();
-    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-      setIsVisible(true); // Si el componente está completamente visible
-    }
-  };
+  const sectionRef = useRef(null);
 
   useEffect(() => {
-    // Añadimos el listener para el evento de scroll
-    window.addEventListener("scroll", handleScroll);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Desconectar el observer después de activarse
+        }
+      },
+      {
+        threshold: 0.5, // Se activa cuando el 50% del componente está visible
+      }
+    );
 
-    // Limpiamos el listener al desmontar el componente
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
     };
   }, []);
 
   return (
     <div
-      id="servicesSection" // Agregamos un ID para detectar el scroll
+    id="servicesSection" 
+      ref={sectionRef}
       className="min-h-[60vh] w-full pb-20 flex flex-col items-center justify-center bg-white"
       style={{
         backgroundImage: `url("images/fondo2.png")`,
