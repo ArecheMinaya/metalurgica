@@ -49,11 +49,11 @@ function Services2() {
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1 }}
       >
-        <FaRegBuilding size={50} color="white" />
-        <h4 className="font-semibold tracking-wide text-2xl text-white">
+        <FaRegBuilding size={30} color="white" />
+        <h4 className="font-semibold tracking-wide text-xl text-white">
           Fabricación y montaje de estructuras metálicas
         </h4>
-        <p className="tracking-wide text-white">
+        <p className=" text-white">
           Diseñamos, fabricamos e instalamos estructuras metálicas a medida para una amplia variedad de aplicaciones industriales.
         </p>
       </motion.div>
@@ -64,11 +64,11 @@ function Services2() {
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1 }}
       >
-        <IoBuildOutline size={50} color="white" />
-        <h4 className="font-semibold tracking-wide text-2xl text-white">
+        <IoBuildOutline size={30} color="white" />
+        <h4 className="font-semibold text-xl text-white">
           Corte y mecanizado de piezas industriales
         </h4>
-        <p className="tracking-wide text-white">
+        <p className="text-white">
           Proporcionamos soluciones personalizadas para la fabricación de piezas únicas o en grandes volúmenes, adaptándonos a las especificaciones exactas de nuestros clientes.
         </p>
       </motion.div>
@@ -79,11 +79,11 @@ function Services2() {
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1 }}
       >
-        <GiCableStayedBridge size={50} color="white" />
-        <h4 className="font-semibold tracking-wide text-2xl text-white">
+        <GiCableStayedBridge size={30} color="white" />
+        <h4 className="font-semibold tracking-wide text-xl text-white">
           Proyectos de soldadura especializada
         </h4>
-        <p className="tracking-wide text-white">
+        <p className="text-white">
           Nos encargamos de proyectos que requieren alta precisión y seguridad, garantizando resultados duraderos y de alta calidad.
         </p>
       </motion.div>

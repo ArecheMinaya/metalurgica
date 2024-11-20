@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { BiLogoGmail } from "react-icons/bi";
 import { motion } from "framer-motion";
 
 function AboutUs() {
@@ -36,16 +34,13 @@ function AboutUs() {
     <div
     id="aboutUsSection" // Le damos un ID a la sección para poder 
       ref={sectionRef} // Usamos ref en lugar de id para el observer
-      className="w-full flex md:flex-row justify-evenly items-center flex-col-reverse h-auto min-h-[500px] pt-20 pb-20 md:pb-0 bg-slate-50"
-      style={{
-        backgroundImage: `url("images/fondo2.png")`,
-        backgroundPosition: "center",
-      }}
+      className="w-full flex md:flex-row justify-evenly items-center flex-col-reverse h-auto min-h-[90vh] pt-20 pb-20 md:pb-0 bg-white"
+     
     >
       <motion.img
         src="/images/about.png"
         alt="About"
-        className="w-[90%] md:w-[45%] h-auto rounded-lg shadow-lg mt-5 md:mt-0 max-w-[500px]"
+        className="w-[90%] md:w-[45%] h-auto rounded-lg shadow-lg mt-10 md:mt-0 max-w-[500px]"
         initial={{ opacity: 0, y: 50 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1 }}
@@ -71,7 +66,7 @@ function AboutUs() {
         </motion.h3>
 
         <motion.p
-          className="mt-9 lg:text-xl"
+          className="mt-9 text-gray-600 text-xl "
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
@@ -83,17 +78,7 @@ function AboutUs() {
           que cumplen con los más altos estándares de calidad y precisión.
         </motion.p>
 
-        <motion.div
-          className="flex gap-5 mt-12"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1 }}
-        >
-          <FaFacebook size={30} />
-          <FaInstagram size={30} />
-          <FaWhatsapp size={30} />
-          <BiLogoGmail size={30} />
-        </motion.div>
+       
       </div>
     </div>
   );

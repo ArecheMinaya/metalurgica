@@ -1,29 +1,28 @@
-import AboutUs from "./components/AboutUs/AboutUs";
-import Services2 from "./components/CallMe/CallMe";
-import ContactUs from "./components/ContactUs/ContactUs";
-import Footer from "./components/Footer/Footer";
-import HeroSection from "./components/HeroSection/HeroSection";
-import Navbar from "./components/Navbar/Navbar";
-import OurProjects from "./components/OurProjects/OurProjects";
-import Services from "./components/Services/Services";
-import { FaWhatsapp } from "react-icons/fa";
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import React from 'react';
+import Home from './home/Home';
+import Navbar from './components/Navbar/Navbar';
+import Projects from './Projects/Projects';
+import ServicesPage from './services/ServicesPage';
+import ContactSection from './contact/Contact';
+
+
 
 function App() {
   return (
-    <main>
+    <Router>
+    {/* <nav>
+      <Link to="/">Home</Link>
+      <Link to="/contact">Contact</Link>
+    </nav> */}
       <Navbar />
-      <HeroSection />
-      <AboutUs />
-      <Services />
-      <Services2 />
-      <OurProjects />
-     
-      <ContactUs />
-      <Footer />
-      <div class="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-4 rounded-full">
-        <FaWhatsapp size={40} />
-      </div>
-    </main>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/projectsSection" element={<Projects />} />
+      <Route path="/servicesSection" element={<ServicesPage />} />
+      <Route path="/contactUsSection" element={<ContactSection />} />
+    </Routes>
+  </Router>
   );
 }
 

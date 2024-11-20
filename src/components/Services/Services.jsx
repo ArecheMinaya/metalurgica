@@ -3,6 +3,7 @@ import { FaChartLine } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 function Services() {
+  const mensaje = "¡Hola! Me gustaría saber más sobre los servicios de Metalúrgica IGM."; // Mensaje predeterminado (opcional)
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
@@ -34,15 +35,12 @@ function Services() {
     <div
     id="servicesSection" 
       ref={sectionRef}
-      className="min-h-[60vh] w-full pb-20 flex flex-col items-center justify-center bg-white"
-      style={{
-        backgroundImage: `url("images/fondo2.png")`,
-        backgroundPosition: "center",
-      }}
+      className="w-full pb-20 flex flex-col items-center justify-center bg-white mt-10"
+    
     >
       {/* Título con animación */}
       <motion.div
-        className="w-[85%] flex mb-16"
+        className="w-[90%] flex mb-16"
         initial={{ opacity: 0, y: 50 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1 }}
@@ -51,7 +49,7 @@ function Services() {
       </motion.div>
 
       {/* Tarjetas con animación */}
-      <div className="flex flex-wrap justify-evenly items-center gap-y-10 gap-6 w-[85%]">
+      <div className="flex flex-wrap justify-between items-center gap-y-10 gap-6 w-[90%]">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -94,7 +92,7 @@ function Services() {
 
 function InvestmentCard({ icon: Icon, title, description }) {
   return (
-    <div className="flex flex-col justify-start items-start p-4 max-w-md shadow-[0px_4px_15px_5px_rgba(0,0,0,0.1)] rounded-xl bg-white">
+    <div className="flex flex-col justify-start items-start p-4 max-w-md">
       {/* Icono circular con sombra y resplandor */}
       <div className="bg-red-600 rounded-full p-6 shadow-lg shadow-red-300 mb-4 transition-transform transform hover:scale-105">
         <Icon className="text-white text-xl" />

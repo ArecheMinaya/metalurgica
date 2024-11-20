@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { GoogleMap, LoadScript, Marker, InfoWindow } from "@react-google-maps/api";
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { BiLogoGmail } from "react-icons/bi";
 
 function ContactUs() {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,93 +44,43 @@ function ContactUs() {
   const onMarkerClick = () => {
     setIsOpen(true); // Cuando se hace click en el marcador, abrimos el InfoWindow
   };
+  const mensaje = "¡Hola! Me gustaría saber más sobre los servicios de Metalúrgica IGM."; // Mensaje predeterminado (opcional)
 
   return (
     <div
     id="contactUsSection"
-      className="min-h-[85vh] w-full flex items-center justify-center py-20 px-5"
+      className="min-h-[35vh] w-full flex items-center justify-center"
       ref={sectionRef}
     >
       <motion.section
-        className="shadow-lg bg-white rounded-xl flex lg:flex-row border border-slate-100 flex-col"
+        className=" w-full "
         initial={{ opacity: 0, y: 50 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        <div className="max-w-[600px] p-10">
-          <motion.h2
-            className="font-bold tracking-wide md:mt-12 text-3xl lg:text-4xl text-red-700"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            Contáctanos
-          </motion.h2>
-          <motion.p
-            className="mb-8 lg:mb-16 font-light sm:text-xl tracking-wide mt-4"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            Estamos aquí para atender sus necesidades. Su satisfacción es nuestra
-            prioridad, por lo que puede contactarnos en cualquier momento a
-            través de nuestro formulario en línea.
-          </motion.p>
-          <form action="#" className="space-y-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 1, ease: "easeOut" }}
-            >
-              <label
-                htmlFor="email"
-                className="block mb-2 text-sm font-medium tracking-wide"
-              >
-                Correo electrónico
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="shadow-sm bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 tracking-wide"
-                placeholder="name@flowbite.com"
-                required
-              />
-            </motion.div>
-
-            <motion.div
-              className="sm:col-span-2"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 1, ease: "easeOut" }}
-            >
-              <label
-                htmlFor="message"
-                className="block mb-2 text-sm font-medium tracking-wide"
-              >
-                Mensaje
-              </label>
-              <textarea
-                id="message"
-                rows="6"
-                className="shadow-sm bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 tracking-wide"
-                placeholder="Deja un mensaje..."
-              ></textarea>
-            </motion.div>
-            <motion.button
-              type="submit"
-              className="h-10 px-4 py-2 m-1 text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400"
-              initial={{ opacity: 0 }}
-              animate={isVisible ? { opacity: 1 } : {}}
-              transition={{ duration: 1, ease: "easeOut" }}
-            >
-              Enviar mensaje
-            </motion.button>
-          </form>
-        </div>
+         <motion.div
+          className="flex gap-5 mb-4 ms-6"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1 }}
+        >
+            <a 
+        href={`https://www.instagram.com/metalurgicaigmsrl`} 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >  <FaInstagram size={30} /></a>
+        
+          <a 
+        href={`https://wa.me/8498504567?text=${encodeURIComponent(mensaje)}`} 
+        target="_blank" 
+        rel="noopener noreferrer"
+      > <FaWhatsapp size={30} /></a> 
+          <a href="mailto:metalurgicaigmsrl@gmail.com"><BiLogoGmail size={30} /></a> 
+        </motion.div>
 
         {/* Mapa */}
         <motion.div
-          className="lg:min-w-[600px] lg:w-[100%] lg:h-[80vh] h-[50vh] w-full bg-slate-400"
+          className="lg:h-[55vh] h-[60vh] w-full bg-slate-400"
           initial={{ opacity: 0, x: 50 }}
           animate={isVisible ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, ease: "easeOut" }}

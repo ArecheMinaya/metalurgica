@@ -107,15 +107,11 @@ const AnimatedList = () => {
         className="mt-8"
       >
         {/* Aquí usamos Link de react-scroll */}
-        <Link
-          to="contactUsSection" // El ID de la sección a la que queremos desplazarnos
-          smooth={true}
-          duration={500}
-          offset={-70} // Desplazamos 100px antes de la sección
-          className="h-10 px-4 py-2 m-1 text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400"
-        >
-          Contactanos
-        </Link>
+        <Link>
+         <a href="#" className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-lg transition">
+         Contáctanos
+          </a>
+         </Link>
       </motion.div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-scroll";
+
+import {Link} from "react-router-dom"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,7 @@ const Navbar = () => {
     <nav className="py-5 px-5 border-gray-200 shadow-md fixed bg-white w-full z-50">
       <div className="container mx-auto flex justify-between items-center">
           <Link
-              to={"home"}
+              to={"/"}
               smooth={true}
               duration={500}
               offset={-70}
@@ -30,7 +31,7 @@ const Navbar = () => {
 
         {/* Menú para pantallas grandes */}
         <div className="hidden lg:flex space-x-4">
-          {["aboutUsSection", "servicesSection", "projectsSection", "contactUsSection"].map((section, index) => (
+          {["/", "servicesSection", "projectsSection", "contactUsSection"].map((section, index) => (
             <Link
               key={index}
               to={section}
@@ -40,7 +41,7 @@ const Navbar = () => {
               className="relative px-4 py-2 text-gray-600 cursor-pointer"
               onClick={() => handleSetActive(section)}
             >
-              <span>{section === "aboutUsSection" ? "Nosotros" : section === "servicesSection" ? "Servicios" : section === "projectsSection" ? "Proyectos" : "Contáctanos"}</span>
+              <span>{section === "/" ? "Nosotros" : section === "servicesSection" ? "Servicios" : section === "projectsSection" ? "Proyectos" : "Contáctanos"}</span>
               {activeLink === section && (
                 <span className="absolute bottom-0 left-0 w-full h-1 bg-red-600"></span>
               )}
@@ -72,7 +73,7 @@ const Navbar = () => {
       {/* Menú para pantallas pequeñas (Mobile) */}
       {isOpen && (
         <div className="lg:hidden mt-4">
-          {["aboutUsSection", "servicesSection", "projectsSection", "contactUsSection"].map((section, index) => (
+          {["/", "servicesSection", "projectsSection", "contactUsSection"].map((section, index) => (
             <Link
               key={index}
               to={section}
@@ -85,7 +86,7 @@ const Navbar = () => {
                 toggleMenu(); // Cierra el menú después de seleccionar una opción en móvil
               }}
             >
-              {section === "aboutUsSection" ? "Nosotros" : section === "servicesSection" ? "Servicios" : section === "projectsSection" ? "Proyectos" : "Contáctanos"}
+              {section === "/" ? "Nosotros" : section === "servicesSection" ? "Servicios" : section === "projectsSection" ? "Proyectos" : "Contáctanos"}
             </Link>
           ))}
         </div>
