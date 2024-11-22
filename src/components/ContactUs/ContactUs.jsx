@@ -64,18 +64,21 @@ function ContactUs() {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
         >
+              <a href="https://www.facebook.com/share/1WxMX337WU/?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer">
+         <FaFacebook size={30} />
+    </a>
             <a 
-        href={`https://www.instagram.com/metalurgicaigmsrl`} 
+      href={`https://www.instagram.com/metalurgicaigmsrl`} 
         target="_blank" 
         rel="noopener noreferrer"
       >  <FaInstagram size={30} /></a>
-        
+     
           <a 
         href={`https://wa.me/8498504567?text=${encodeURIComponent(mensaje)}`} 
         target="_blank" 
         rel="noopener noreferrer"
       > <FaWhatsapp size={30} /></a> 
-          <a href="mailto:metalurgicaigmsrl@gmail.com"><BiLogoGmail size={30} /></a> 
+      
         </motion.div>
 
         {/* Mapa */}

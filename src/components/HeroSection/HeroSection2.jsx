@@ -33,16 +33,15 @@ function HeroSection2() {
             Transformamos el metal en soluciones precisas y duraderas, impulsando el progreso industrial con tecnología de vanguardia y un enfoque en la excelencia.
           </motion.p>
           <div className="space-x-4">
-            <Link>
+            <Link 
+
+             to="/contactUsSection#"
+            >
               <a href="#" className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-lg transition">
                 Contáctanos
               </a>
             </Link>
-            <Link>
-              <button className="text-red-400 hover:underline font-semibold">
-                Sobre nosotros →
-              </button>
-            </Link>
+            
           </div>
         </motion.div>
 

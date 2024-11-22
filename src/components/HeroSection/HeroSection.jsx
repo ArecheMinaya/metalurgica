@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-scroll"; // Importamos Link desde react-scroll
+import { Link } from "react-router-dom";
 
 function HeroSection() {
   return (
@@ -107,8 +107,14 @@ const AnimatedList = () => {
         className="mt-8"
       >
         {/* Aquí usamos Link de react-scroll */}
-        <Link>
-         <a href="#" className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-lg transition">
+        <Link 
+         to="/contactUsSection#"
+         smooth={true}
+         duration={500}
+         offset={-70}
+        
+        >
+         <a className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-lg transition">
          Contáctanos
           </a>
          </Link>

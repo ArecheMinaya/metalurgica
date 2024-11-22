@@ -24,7 +24,10 @@ const HeroSection3 = () => {
         </p>
         
         <div className="flex justify-center gap-4">
-         <Link>
+        <Link        to="/contactUsSection#"
+         smooth={true}
+         duration={500}
+         offset={-70}>
          <a href="#" className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-lg transition">
          Contáctanos
           </a>

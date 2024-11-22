@@ -10,6 +10,7 @@ function Projects() {
   const mensaje = "¡Hola! Me gustaría saber más sobre los servicios de Metalúrgica IGM."; // Mensaje predeterminado (opcional)
   return (
     <main>
+      <div id="#"></div>
       <HeroSection3 />
       <OurProjects />
       <ContactUs />
